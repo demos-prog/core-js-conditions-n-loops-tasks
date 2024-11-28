@@ -153,8 +153,75 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  const digitWords = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ];
+  let result = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    const char = numberStr[i];
+
+    switch (char) {
+      case '-':
+        result += 'minus ';
+        break;
+      case '.':
+      case ',':
+        result += 'point ';
+        break;
+      case '0':
+        result += `${digitWords[0]} `;
+        break;
+      case '1':
+        result += `${digitWords[1]} `;
+        break;
+      case '2':
+        result += `${digitWords[2]} `;
+        break;
+      case '3':
+        result += `${digitWords[3]} `;
+        break;
+      case '4':
+        result += `${digitWords[4]} `;
+        break;
+      case '5':
+        result += `${digitWords[5]} `;
+        break;
+      case '6':
+        result += `${digitWords[6]} `;
+        break;
+      case '7':
+        result += `${digitWords[7]} `;
+        break;
+      case '8':
+        result += `${digitWords[8]} `;
+        break;
+      case '9':
+        result += `${digitWords[9]} `;
+        break;
+      default:
+        break;
+    }
+  }
+  let trimmedResult = '';
+  for (let j = 0; j < result.length; j += 1) {
+    if (result[j] !== ' ') {
+      trimmedResult += result[j];
+    } else if (j < result.length - 1 && result[j + 1] !== ' ') {
+      trimmedResult += result[j];
+    }
+  }
+
+  return trimmedResult;
 }
 
 /**
